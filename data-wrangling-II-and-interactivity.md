@@ -119,3 +119,50 @@ nyc_water_json =
   jsonlite::fromJSON() %>% 
   as_tibble()
 ```
+
+## BRFSS
+
+``` r
+brfss_2010 = 
+  GET("https://chronicdata.cdc.gov/resource/acme-vg9e.csv",
+      query = list("$limit" = 5000)) %>% 
+  content("parsed")
+```
+
+    ## 
+    ## -- Column specification --------------------------------------------------------
+    ## cols(
+    ##   .default = col_character(),
+    ##   year = col_double(),
+    ##   sample_size = col_double(),
+    ##   data_value = col_double(),
+    ##   confidence_limit_low = col_double(),
+    ##   confidence_limit_high = col_double(),
+    ##   display_order = col_double(),
+    ##   locationid = col_logical()
+    ## )
+    ## i Use `spec()` for the full column specifications.
+
+## Let’s look at Pokemon\!
+
+``` r
+pokemon_data = 
+  GET("https://pokeapi.co/api/v2/pokemon/1") %>% 
+  content
+
+pokemon_data$name
+```
+
+    ## [1] "bulbasaur"
+
+``` r
+pokemon_data$height
+```
+
+    ## [1] 7
+
+``` r
+pokemon_data$ability
+```
+
+    ## NULL
